@@ -1,0 +1,5 @@
+npm init
+
+npm install graphql --save
+
+node server.js
