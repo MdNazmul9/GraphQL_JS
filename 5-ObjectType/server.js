@@ -6,10 +6,17 @@ var { buildSchema } = require("graphql");
 
 
 var schema = buildSchema(`
+
+    type Profile{
+        id: Int
+        isGenarated: Boolean
+    }
     type Developer{
         name: String,
         email: String
         experience: Int
+        profile: Profile
+
     }
     type Query{
         nazmul: Developer,
@@ -24,7 +31,8 @@ var root = {
         return  true;
     },
     nazmul: () =>{
-        return { name: "Md. Nazm,ul Hossain", email: "mn@mn.com", experience: "3"}
+        return { name: "Md. Nazm,ul Hossain", email: "mn@mn.com", experience: "3", profile: { id: 5,
+            isGenarated: 0}}
     }
 
 };
