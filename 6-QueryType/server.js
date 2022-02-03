@@ -2,6 +2,7 @@ var express = require("express");
 var { graphqlHTTP } = require("express-graphql");
 var { buildSchema } = require("graphql");
 
+var usersData = require("./users.json");
 
 
 var schema = buildSchema(`
@@ -22,16 +23,8 @@ var schema = buildSchema(`
 var root = {
     
     users: () =>{
-        return [
-            { name: "Nazmul",
-            email: "nazmul.cse48@gmail.com"},
-            { name: "Rafiqul",
-            email: "rafiqul@gmail.com"},
-            { name: "Munna",
-            email: "munna@gmail.com"},
-            { name: "Subho",
-            email: "subho@gmail.com"},
-        ]
+        return usersData;
+            
     }
 
 };
