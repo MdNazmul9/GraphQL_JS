@@ -8,26 +8,30 @@ var schema = buildSchema(`
 
     type Person{
         name: String
-        email: [String]
+        email: String
     }
-    type Developer{
-        profile: Person
-        experience: Int
-    }
+   
     type Query{
-        nazmul: Developer,
-        isDeveloper: Boolean
+        users: [Person],
+     
 
     }
 
 `);
 
 var root = {
-    isDeveloper: () =>{
-        return  true;
-    },
-    nazmul: () =>{
-        return { experience: "3", profile: { name: "Nazmul Hossain", email: ["Nazmul.cse48@gmail.com"]}}
+    
+    users: () =>{
+        return [
+            { name: "Nazmul",
+            email: "nazmul.cse48@gmail.com"},
+            { name: "Rafiqul",
+            email: "rafiqul@gmail.com"},
+            { name: "Munna",
+            email: "munna@gmail.com"},
+            { name: "Subho",
+            email: "subho@gmail.com"},
+        ]
     }
 
 };
