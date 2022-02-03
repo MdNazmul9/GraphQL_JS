@@ -8,12 +8,16 @@ schema = buildSchema(`
     type Query{
         name: String
         email: String
+        age: Float
+        isDeveloper: Boolean
     }
 `);
 
 
 
 var root = {
+    age: () => 2.4,
+    isDeveloper: () => 0,
     name: () => {
         return "Hi Nazmul Hossain"
     },
