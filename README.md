@@ -1,1 +1,17 @@
 # GraphQL_JS
+### cmd 
+```
+
+npm init
+
+npm install express express-graphql graphql --save
+
+node server.js
+
+npm install nodemon
+
+npm run dev
+
+
+
+```
