@@ -28,6 +28,8 @@ var schema = buildSchema(`
         users: [Person]
         user(id:Int): Person
         getMsg: String
+        getSpace(id: ID!): Space !
+
     }
 
     type Mutation{
@@ -45,7 +47,13 @@ var root = {
     user: ({id}) => userData.find(user => user.id === id),
     addMsg: ({ msg }) => fakeDb.message = msg,
     getMsg: () => fakeDb.message,
-    createSpace: ({name, rent}) => (fakeDb[3] = { id:3, name, rent }),
+    createSpace: ({name, rent}) => (fakeDb[fakeDb.length] = { id:fakeDb.length, name, rent }),
+    getSpace: ({ id }) => {
+        console.log(fakeDb);
+        console.log(id);
+
+        return fakeDb.find((space) => space.id === id)
+    },
    
 }
 
@@ -57,7 +65,7 @@ app.use('/graphql', graphqlHTTP({
     graphiql: true
 }))
 
-app.listen('4000')
+app.listen('40000')
 
 console.log('Congratulations')
 
