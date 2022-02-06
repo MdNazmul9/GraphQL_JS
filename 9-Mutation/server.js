@@ -4,8 +4,6 @@ var { buildSchema } = require("graphql");
 
 var userData = require('./users.json');
 
-let fakeDb = {}
-
 var schema = buildSchema(`
     type Person{
         id: Int
@@ -19,11 +17,6 @@ var schema = buildSchema(`
     type Query{
         users: [Person]
         user(id:Int): Person
-        getMsg: String
-    }
-
-    type Mutation{
-         addMsg(msg:String): String
     }
 
 `)
@@ -31,9 +24,7 @@ var schema = buildSchema(`
 
 var root = {
     users: () => userData,
-    user: ({id}) => userData.find(user => user.id === id),
-    addMsg: ({ msg }) => fakeDb.message = msg,
-    getMsg: () => fakeDb.message,
+    user: ({id}) => userData.find(user => user.id === id)
    
 }
 
